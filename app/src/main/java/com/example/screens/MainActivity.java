@@ -6,28 +6,26 @@ import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
+import android.content.Intent;
 public class MainActivity extends AppCompatActivity {
-    private Button b;
+    Button b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button b =(Button)findViewById(R.id.button);
-
-
-
-
-
+        b = findViewById(R.id.button);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View View) {
+
                 Log.d("==>","We clicked on Tomten!");
                 setContentView(R.layout.activity_button2);
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("name", "Daniel"); // Optional
-                intent.putExtra("number", 1); // Optional
+
+                Intent intent = new Intent(MainActivity.this, ButtonActivity2.class);
+                intent.putExtra("name", "Hello world"); // Optional
+                //intent.putExtra("number", 1); // Optional
                 startActivity(intent);
 
             }
