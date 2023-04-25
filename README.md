@@ -3,41 +3,69 @@
 
 **Skriv din rapport här!**
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Man började med att lägga till en knapp på första skämren som är 
+"ButtonActivity". Uppgiften var att denna knapp skulle starta den 
+andra aktiviteten när den första aktiviteten klickas på. Man var tvungen
+att skicka data mellan skärmarna också genom att använda sig av Intent bundle. 
+För att detta skulle fungera var man tvungen att använda sig av t.ex 
+TextView och Button. 
 
-## Följande grundsyn gäller dugga-svar:
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Förklara kod:
+super.onCreate(savedInstanceState) anropar den överordnade 
+onCreate()-metoden för att säkerställa att den ursprungliga funktionaliteten 
+utförs korrekt. 
+setContentView(R.layout.activity_main) ställer in aktivitetens 
+layout till att vara definierad i layoutfilen R.layout.activity_main. Detta 
+innebär att användargränssnittet för aktiviteten kommer att visas baserat på 
+denna layout. 
+b = findViewById(R.id.button) hittar en knapp med id "button" i aktivitetens layout
+och tilldelar referensen till en variabel b. 
+b.setOnClickListener(new View.OnClickListener() { ... }) sätter en lyssnare på
+knappen b som kommer att lyssna på klickhändelser. När knappen klickas på kommer 
+den kod som finns inuti lyssnaren att köras.
+Log.d("==>", "We clicked on Tomten!") skapar en loggmeddelande när knappen klickas 
+på. Loggmeddelandet kommer att visas i Logcat-fönstret i Android Studio för att 
+underlätta felsökning och spårning.
+setContentView(R.layout.activity_button2) ändrar aktivitetens layout till att vara 
+definierad i layoutfilen R.layout.activity_button2. 
+Detta innebär att användargränssnittet för aktiviteten kommer att uppdateras och 
+visas baserat på denna nya layout.
+
+
+
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        b = findViewById(R.id.button);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View View) {
+
+                Log.d("==>","We clicked on Tomten!");
+                setContentView(R.layout.activity_button2);
+
+                Intent intent = new Intent(MainActivity.this, ButtonActivity2.class);
+                intent.putExtra("name", "Hello world"); // Optional
+                //intent.putExtra("number", 1); // Optional
+                startActivity(intent);
+                
     }
 }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Bilder:
 
 ![](ScreenButton1.png)
 ![](Screen.Button2.png)
 
-Läs gärna:
+För och nackdelar: 
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Fördelar:
+
+nackdelar:
+
