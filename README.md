@@ -5,37 +5,31 @@
 
 Man började med att lägga till en knapp på första skämren som är 
 "ButtonActivity". Uppgiften var att denna knapp skulle starta den 
-andra aktiviteten när den första aktiviteten klickas på. Man var tvungen
-att skicka data mellan skärmarna också genom att använda sig av Intent bundle. 
-För att detta skulle fungera var man tvungen att använda sig av t.ex 
-TextView och Button. 
-
+andra aktiviteten när den första aktiviteten klickades på. Man hade 
+som uppgift att skicka data mellan skärmarna också genom att använda 
+sig av Intent bundle. För att detta skulle fungera var man tvungen 
+att använda sig av t.ex TextView och Button. 
 
 
 Förklara kod:
-super.onCreate(savedInstanceState) anropar den överordnade 
-onCreate()-metoden för att säkerställa att den ursprungliga funktionaliteten 
-utförs korrekt. 
-setContentView(R.layout.activity_main) ställer in aktivitetens 
-layout till att vara definierad i layoutfilen R.layout.activity_main. Detta 
-innebär att användargränssnittet för aktiviteten kommer att visas baserat på 
-denna layout. 
-b = findViewById(R.id.button) hittar en knapp med id "button" i aktivitetens layout
-och tilldelar referensen till en variabel b. 
-b.setOnClickListener(new View.OnClickListener() { ... }) sätter en lyssnare på
-knappen b som kommer att lyssna på klickhändelser. När knappen klickas på kommer 
-den kod som finns inuti lyssnaren att köras.
-Log.d("==>", "We clicked on Tomten!") skapar en loggmeddelande när knappen klickas 
-på. Loggmeddelandet kommer att visas i Logcat-fönstret i Android Studio för att 
-underlätta felsökning och spårning.
-setContentView(R.layout.activity_button2) ändrar aktivitetens layout till att vara 
-definierad i layoutfilen R.layout.activity_button2. 
-Detta innebär att användargränssnittet för aktiviteten kommer att uppdateras och 
-visas baserat på denna nya layout.
+Koden är indelat i fyra olika stycken, här kommer en en beskrivning: 
 
+Stycke 1:
+Denna kod representerar en onCreate-metod i en Android-aktivitet som 
+sätter layouten till "activity_main" och kopplar en knapp med id "button" 
+till en medlemsvariabel "b". Detta gör det möjligt att hantera knappen i koden.
 
+Stycke 2:
+När knappen klickas på kommer koden i onClick-metoden att utföras.
 
+stycke 3:
+Koden skriver ett debug-loggmeddelande och ändrar sedan aktivitetens layout 
+till att använda "activity_button2" efter att knappen har klickats på.
 
+stycke 4:
+Koden skapar ett Intent-objekt för att starta en ny aktivitet, ButtonActivity2, 
+med extra data "name" som innehåller strängen "Hello world". Den nya aktiviteten 
+startas sedan med startActivity-metoden.
 ```
  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +57,15 @@ Bilder:
 ![](ScreenButton1.png)
 ![](Screen.Button2.png)
 
+
 För och nackdelar: 
 
 Fördelar:
+Fördelen är att att det var enkelt emd att placera ut kompontenterna, det var smidigt
+att placera ut delarna på skärmen. Det blir enkelt att ändra på placeringen av komponenterna 
+på ett sätt som passar användaren.
 
 nackdelar:
-
+Nackdelar kan vara att behärska samt lära sig XML-kod. Eftersom layoutfiler är komplicerade. 
+Det krävs tid och erfarenhet. Det är ganska utmanande för nybörjare att förstå sig på och 
+använda sig av layoutfiler.
